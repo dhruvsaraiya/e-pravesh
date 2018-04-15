@@ -1,0 +1,1380 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="admissionModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Academic">
+          <Key>
+            <PropertyRef Name="academic_id" />
+          </Key>
+          <Property Name="academic_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="std_id" Type="nvarchar" MaxLength="50" />
+          <Property Name="ssc_year" Type="nvarchar" MaxLength="4" />
+          <Property Name="ssc_school" Type="nvarchar" MaxLength="50" />
+          <Property Name="ssc_board" Type="nvarchar" MaxLength="50" />
+          <Property Name="ssc_rno" Type="nvarchar" MaxLength="50" />
+          <Property Name="ssc_marks" Type="int" />
+          <Property Name="hsc_year" Type="nvarchar" MaxLength="4" />
+          <Property Name="hsc_school" Type="nvarchar" MaxLength="50" />
+          <Property Name="hsc_board" Type="nvarchar" MaxLength="50" />
+          <Property Name="hsc_rno" Type="nvarchar" MaxLength="50" />
+          <Property Name="hsc_marks" Type="int" />
+          <Property Name="competitive_exam_id" Type="int" />
+          <Property Name="competitive_exam_year" Type="nvarchar" MaxLength="4" />
+          <Property Name="competitive_exam_rno" Type="nvarchar" MaxLength="50" />
+          <Property Name="competitive_exam_marks" Type="int" />
+        </EntityType>
+        <EntityType Name="AdminDetails">
+          <Key>
+            <PropertyRef Name="admin_id" />
+          </Key>
+          <Property Name="admin_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="admin_name" Type="nvarchar" MaxLength="50" />
+          <Property Name="username" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="Allotment">
+          <Key>
+            <PropertyRef Name="std_id" />
+          </Key>
+          <Property Name="std_id" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="alloted_choice_id" Type="int" />
+          <Property Name="preference_no" Type="int" />
+          <Property Name="round_no" Type="int" />
+          <Property Name="confirm_status" Type="int" />
+        </EntityType>
+        <EntityType Name="Available_Choice">
+          <Key>
+            <PropertyRef Name="choice_id" />
+          </Key>
+          <Property Name="choice_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="branch_id" Type="int" />
+          <Property Name="college_id" Type="int" />
+          <Property Name="program_id" Type="int" />
+          <Property Name="gen" Type="int" />
+          <Property Name="obc" Type="int" />
+          <Property Name="sc" Type="int" />
+          <Property Name="st" Type="int" />
+        </EntityType>
+        <EntityType Name="Branch">
+          <Key>
+            <PropertyRef Name="branch_id" />
+          </Key>
+          <Property Name="branch_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="branch_name" Type="nvarchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Branch_College">
+          <Key>
+            <PropertyRef Name="branch_id" />
+            <PropertyRef Name="college_id" />
+            <PropertyRef Name="program_id" />
+          </Key>
+          <Property Name="branch_id" Type="int" Nullable="false" />
+          <Property Name="college_id" Type="int" Nullable="false" />
+          <Property Name="program_id" Type="int" Nullable="false" />
+          <Property Name="general" Type="int" />
+          <Property Name="obc" Type="int" />
+          <Property Name="sc" Type="int" />
+          <Property Name="st" Type="int" />
+        </EntityType>
+        <EntityType Name="Branch_Program">
+          <Key>
+            <PropertyRef Name="branch_id" />
+            <PropertyRef Name="program_id" />
+          </Key>
+          <Property Name="branch_id" Type="int" Nullable="false" />
+          <Property Name="program_id" Type="int" Nullable="false" />
+          <Property Name="refence_no" Type="int" />
+        </EntityType>
+        <EntityType Name="Category">
+          <Key>
+            <PropertyRef Name="category_id" />
+          </Key>
+          <Property Name="category_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="category_name" Type="nvarchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="College">
+          <Key>
+            <PropertyRef Name="college_id" />
+          </Key>
+          <Property Name="college_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="college_name" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="city" Type="nvarchar" MaxLength="50" />
+          <Property Name="email_id" Type="nvarchar" MaxLength="50" />
+          <Property Name="contact_no" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="College_Program">
+          <Key>
+            <PropertyRef Name="college_id" />
+            <PropertyRef Name="program_id" />
+          </Key>
+          <Property Name="college_id" Type="int" Nullable="false" />
+          <Property Name="program_id" Type="int" Nullable="false" />
+          <Property Name="reference_no" Type="int" />
+        </EntityType>
+        <EntityType Name="Competitive_Exam">
+          <Key>
+            <PropertyRef Name="exam_id" />
+          </Key>
+          <Property Name="exam_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="exam_name" Type="nvarchar" MaxLength="50" />
+          <Property Name="program_id" Type="int" />
+        </EntityType>
+        <EntityType Name="Event">
+          <Key>
+            <PropertyRef Name="event_id" />
+          </Key>
+          <Property Name="event_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="event_details" Type="nvarchar" MaxLength="500" />
+        </EntityType>
+        <EntityType Name="Login">
+          <Key>
+            <PropertyRef Name="username" />
+          </Key>
+          <Property Name="username" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="password" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="role" Type="nvarchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Program">
+          <Key>
+            <PropertyRef Name="program_id" />
+          </Key>
+          <Property Name="program_id" Type="int" Nullable="false" />
+          <Property Name="program_name" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="no_of_round" Type="int" />
+        </EntityType>
+        <EntityType Name="Round">
+          <Key>
+            <PropertyRef Name="round_id" />
+            <PropertyRef Name="program_id" />
+          </Key>
+          <Property Name="round_id" Type="int" Nullable="false" />
+          <Property Name="program_id" Type="int" Nullable="false" />
+          <Property Name="start_date" Type="datetime2" Precision="7" />
+          <Property Name="end_date" Type="datetime2" Precision="7" />
+          <Property Name="status" Type="nvarchar" MaxLength="50" />
+          <Property Name="result_generated" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="Seat">
+          <Key>
+            <PropertyRef Name="seat_id" />
+          </Key>
+          <Property Name="seat_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="gen" Type="int" />
+          <Property Name="sc" Type="int" />
+          <Property Name="st" Type="int" />
+          <Property Name="obc" Type="int" />
+        </EntityType>
+        <EntityType Name="Student_Choice">
+          <Key>
+            <PropertyRef Name="std_id" />
+            <PropertyRef Name="choice_id" />
+          </Key>
+          <Property Name="std_id" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="choice_id" Type="int" Nullable="false" />
+          <Property Name="round_id" Type="int" Nullable="false" />
+          <Property Name="preference_no" Type="int" />
+          <Property Name="status" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="StudentDetails">
+          <Key>
+            <PropertyRef Name="std_id" />
+          </Key>
+          <Property Name="std_id" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="std_name" Type="nvarchar" MaxLength="50" />
+          <Property Name="std_category" Type="int" />
+          <Property Name="username" Type="nvarchar" MaxLength="50" />
+          <Property Name="academic_id" Type="int" />
+          <Property Name="dob" Type="datetime2" Precision="7" />
+          <Property Name="registration_date" Type="datetime2" Precision="7" />
+          <Property Name="contact_no" Type="nvarchar" MaxLength="50" />
+          <Property Name="email_id" Type="nvarchar" MaxLength="50" />
+          <Property Name="fees_paid" Type="int" />
+          <Property Name="rank" Type="int" />
+          <Property Name="pin" Type="nvarchar" MaxLength="50" />
+          <Property Name="program" Type="int" />
+          <Property Name="verified" Type="int" />
+        </EntityType>
+        <Association Name="FK_Academic_ToTable_AC_STUDENT">
+          <End Role="StudentDetails" Type="Self.StudentDetails" Multiplicity="0..1" />
+          <End Role="Academic" Type="Self.Academic" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="StudentDetails">
+              <PropertyRef Name="std_id" />
+            </Principal>
+            <Dependent Role="Academic">
+              <PropertyRef Name="std_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Academic_ToTable_SC_STUDENT">
+          <End Role="StudentDetails" Type="Self.StudentDetails" Multiplicity="1" />
+          <End Role="Student_Choice" Type="Self.Student_Choice" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="StudentDetails">
+              <PropertyRef Name="std_id" />
+            </Principal>
+            <Dependent Role="Student_Choice">
+              <PropertyRef Name="std_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Admin_ToTable_AD">
+          <End Role="Login" Type="Self.Login" Multiplicity="0..1" />
+          <End Role="AdminDetails" Type="Self.AdminDetails" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Login">
+              <PropertyRef Name="username" />
+            </Principal>
+            <Dependent Role="AdminDetails">
+              <PropertyRef Name="username" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Allotment_ToTable_1">
+          <End Role="Available_Choice" Type="Self.Available_Choice" Multiplicity="0..1" />
+          <End Role="Allotment" Type="Self.Allotment" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Available_Choice">
+              <PropertyRef Name="choice_id" />
+            </Principal>
+            <Dependent Role="Allotment">
+              <PropertyRef Name="alloted_choice_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Allotment_ToTable_AL_STUDENT">
+          <End Role="StudentDetails" Type="Self.StudentDetails" Multiplicity="1" />
+          <End Role="Allotment" Type="Self.Allotment" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="StudentDetails">
+              <PropertyRef Name="std_id" />
+            </Principal>
+            <Dependent Role="Allotment">
+              <PropertyRef Name="std_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Available_Choice_ToTable">
+          <End Role="Branch" Type="Self.Branch" Multiplicity="0..1" />
+          <End Role="Available_Choice" Type="Self.Available_Choice" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Branch">
+              <PropertyRef Name="branch_id" />
+            </Principal>
+            <Dependent Role="Available_Choice">
+              <PropertyRef Name="branch_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Available_Choice_ToTable_1">
+          <End Role="College" Type="Self.College" Multiplicity="0..1" />
+          <End Role="Available_Choice" Type="Self.Available_Choice" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="College">
+              <PropertyRef Name="college_id" />
+            </Principal>
+            <Dependent Role="Available_Choice">
+              <PropertyRef Name="college_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Available_Choice_ToTable_2">
+          <End Role="Program" Type="Self.Program" Multiplicity="0..1" />
+          <End Role="Available_Choice" Type="Self.Available_Choice" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Program">
+              <PropertyRef Name="program_id" />
+            </Principal>
+            <Dependent Role="Available_Choice">
+              <PropertyRef Name="program_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Branch_College_ToTable">
+          <End Role="Branch" Type="Self.Branch" Multiplicity="1" />
+          <End Role="Branch_College" Type="Self.Branch_College" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Branch">
+              <PropertyRef Name="branch_id" />
+            </Principal>
+            <Dependent Role="Branch_College">
+              <PropertyRef Name="branch_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Branch_College_ToTable_1">
+          <End Role="College" Type="Self.College" Multiplicity="1" />
+          <End Role="Branch_College" Type="Self.Branch_College" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="College">
+              <PropertyRef Name="college_id" />
+            </Principal>
+            <Dependent Role="Branch_College">
+              <PropertyRef Name="college_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Branch_College_ToTable_2">
+          <End Role="Program" Type="Self.Program" Multiplicity="1" />
+          <End Role="Branch_College" Type="Self.Branch_College" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Program">
+              <PropertyRef Name="program_id" />
+            </Principal>
+            <Dependent Role="Branch_College">
+              <PropertyRef Name="program_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Branch_Program_ToTable_B">
+          <End Role="Branch" Type="Self.Branch" Multiplicity="1" />
+          <End Role="Branch_Program" Type="Self.Branch_Program" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Branch">
+              <PropertyRef Name="branch_id" />
+            </Principal>
+            <Dependent Role="Branch_Program">
+              <PropertyRef Name="branch_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Branch_Program_ToTable_P">
+          <End Role="Program" Type="Self.Program" Multiplicity="1" />
+          <End Role="Branch_Program" Type="Self.Branch_Program" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Program">
+              <PropertyRef Name="program_id" />
+            </Principal>
+            <Dependent Role="Branch_Program">
+              <PropertyRef Name="program_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_College_Program_ToTable">
+          <End Role="College" Type="Self.College" Multiplicity="1" />
+          <End Role="College_Program" Type="Self.College_Program" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="College">
+              <PropertyRef Name="college_id" />
+            </Principal>
+            <Dependent Role="College_Program">
+              <PropertyRef Name="college_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_College_Program_ToTable_1">
+          <End Role="Program" Type="Self.Program" Multiplicity="1" />
+          <End Role="College_Program" Type="Self.College_Program" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Program">
+              <PropertyRef Name="program_id" />
+            </Principal>
+            <Dependent Role="College_Program">
+              <PropertyRef Name="program_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Competitive_Exam_ToTable">
+          <End Role="Program" Type="Self.Program" Multiplicity="0..1" />
+          <End Role="Competitive_Exam" Type="Self.Competitive_Exam" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Program">
+              <PropertyRef Name="program_id" />
+            </Principal>
+            <Dependent Role="Competitive_Exam">
+              <PropertyRef Name="program_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Round_ToTable">
+          <End Role="Program" Type="Self.Program" Multiplicity="1" />
+          <End Role="Round" Type="Self.Round" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Program">
+              <PropertyRef Name="program_id" />
+            </Principal>
+            <Dependent Role="Round">
+              <PropertyRef Name="program_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Student_Choice_ToTable_1">
+          <End Role="Available_Choice" Type="Self.Available_Choice" Multiplicity="1" />
+          <End Role="Student_Choice" Type="Self.Student_Choice" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Available_Choice">
+              <PropertyRef Name="choice_id" />
+            </Principal>
+            <Dependent Role="Student_Choice">
+              <PropertyRef Name="choice_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Student_ToTable_CATEGORY">
+          <End Role="Category" Type="Self.Category" Multiplicity="0..1" />
+          <End Role="StudentDetails" Type="Self.StudentDetails" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Category">
+              <PropertyRef Name="category_id" />
+            </Principal>
+            <Dependent Role="StudentDetails">
+              <PropertyRef Name="std_category" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Student_ToTable_LOGIN">
+          <End Role="Login" Type="Self.Login" Multiplicity="0..1" />
+          <End Role="StudentDetails" Type="Self.StudentDetails" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Login">
+              <PropertyRef Name="username" />
+            </Principal>
+            <Dependent Role="StudentDetails">
+              <PropertyRef Name="username" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Student_ToTable_PROGRAM">
+          <End Role="Program" Type="Self.Program" Multiplicity="0..1" />
+          <End Role="StudentDetails" Type="Self.StudentDetails" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Program">
+              <PropertyRef Name="program_id" />
+            </Principal>
+            <Dependent Role="StudentDetails">
+              <PropertyRef Name="program" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="admissionModelStoreContainer">
+          <EntitySet Name="Academic" EntityType="Self.Academic" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="AdminDetails" EntityType="Self.AdminDetails" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Allotment" EntityType="Self.Allotment" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Available_Choice" EntityType="Self.Available_Choice" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Branch" EntityType="Self.Branch" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Branch_College" EntityType="Self.Branch_College" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Branch_Program" EntityType="Self.Branch_Program" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Category" EntityType="Self.Category" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="College" EntityType="Self.College" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="College_Program" EntityType="Self.College_Program" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Competitive_Exam" EntityType="Self.Competitive_Exam" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Event" EntityType="Self.Event" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Login" EntityType="Self.Login" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Program" EntityType="Self.Program" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Round" EntityType="Self.Round" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Seat" EntityType="Self.Seat" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Student_Choice" EntityType="Self.Student_Choice" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="StudentDetails" EntityType="Self.StudentDetails" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_Academic_ToTable_AC_STUDENT" Association="Self.FK_Academic_ToTable_AC_STUDENT">
+            <End Role="StudentDetails" EntitySet="StudentDetails" />
+            <End Role="Academic" EntitySet="Academic" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Academic_ToTable_SC_STUDENT" Association="Self.FK_Academic_ToTable_SC_STUDENT">
+            <End Role="StudentDetails" EntitySet="StudentDetails" />
+            <End Role="Student_Choice" EntitySet="Student_Choice" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Admin_ToTable_AD" Association="Self.FK_Admin_ToTable_AD">
+            <End Role="Login" EntitySet="Login" />
+            <End Role="AdminDetails" EntitySet="AdminDetails" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Allotment_ToTable_1" Association="Self.FK_Allotment_ToTable_1">
+            <End Role="Available_Choice" EntitySet="Available_Choice" />
+            <End Role="Allotment" EntitySet="Allotment" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Allotment_ToTable_AL_STUDENT" Association="Self.FK_Allotment_ToTable_AL_STUDENT">
+            <End Role="StudentDetails" EntitySet="StudentDetails" />
+            <End Role="Allotment" EntitySet="Allotment" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Available_Choice_ToTable" Association="Self.FK_Available_Choice_ToTable">
+            <End Role="Branch" EntitySet="Branch" />
+            <End Role="Available_Choice" EntitySet="Available_Choice" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Available_Choice_ToTable_1" Association="Self.FK_Available_Choice_ToTable_1">
+            <End Role="College" EntitySet="College" />
+            <End Role="Available_Choice" EntitySet="Available_Choice" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Available_Choice_ToTable_2" Association="Self.FK_Available_Choice_ToTable_2">
+            <End Role="Program" EntitySet="Program" />
+            <End Role="Available_Choice" EntitySet="Available_Choice" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Branch_College_ToTable" Association="Self.FK_Branch_College_ToTable">
+            <End Role="Branch" EntitySet="Branch" />
+            <End Role="Branch_College" EntitySet="Branch_College" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Branch_College_ToTable_1" Association="Self.FK_Branch_College_ToTable_1">
+            <End Role="College" EntitySet="College" />
+            <End Role="Branch_College" EntitySet="Branch_College" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Branch_College_ToTable_2" Association="Self.FK_Branch_College_ToTable_2">
+            <End Role="Program" EntitySet="Program" />
+            <End Role="Branch_College" EntitySet="Branch_College" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Branch_Program_ToTable_B" Association="Self.FK_Branch_Program_ToTable_B">
+            <End Role="Branch" EntitySet="Branch" />
+            <End Role="Branch_Program" EntitySet="Branch_Program" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Branch_Program_ToTable_P" Association="Self.FK_Branch_Program_ToTable_P">
+            <End Role="Program" EntitySet="Program" />
+            <End Role="Branch_Program" EntitySet="Branch_Program" />
+          </AssociationSet>
+          <AssociationSet Name="FK_College_Program_ToTable" Association="Self.FK_College_Program_ToTable">
+            <End Role="College" EntitySet="College" />
+            <End Role="College_Program" EntitySet="College_Program" />
+          </AssociationSet>
+          <AssociationSet Name="FK_College_Program_ToTable_1" Association="Self.FK_College_Program_ToTable_1">
+            <End Role="Program" EntitySet="Program" />
+            <End Role="College_Program" EntitySet="College_Program" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Competitive_Exam_ToTable" Association="Self.FK_Competitive_Exam_ToTable">
+            <End Role="Program" EntitySet="Program" />
+            <End Role="Competitive_Exam" EntitySet="Competitive_Exam" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Round_ToTable" Association="Self.FK_Round_ToTable">
+            <End Role="Program" EntitySet="Program" />
+            <End Role="Round" EntitySet="Round" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Student_Choice_ToTable_1" Association="Self.FK_Student_Choice_ToTable_1">
+            <End Role="Available_Choice" EntitySet="Available_Choice" />
+            <End Role="Student_Choice" EntitySet="Student_Choice" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Student_ToTable_CATEGORY" Association="Self.FK_Student_ToTable_CATEGORY">
+            <End Role="Category" EntitySet="Category" />
+            <End Role="StudentDetails" EntitySet="StudentDetails" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Student_ToTable_LOGIN" Association="Self.FK_Student_ToTable_LOGIN">
+            <End Role="Login" EntitySet="Login" />
+            <End Role="StudentDetails" EntitySet="StudentDetails" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Student_ToTable_PROGRAM" Association="Self.FK_Student_ToTable_PROGRAM">
+            <End Role="Program" EntitySet="Program" />
+            <End Role="StudentDetails" EntitySet="StudentDetails" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="admissionModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="Academic">
+          <Key>
+            <PropertyRef Name="academic_id" />
+          </Key>
+          <Property Name="academic_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="std_id" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="ssc_year" Type="String" MaxLength="4" FixedLength="false" Unicode="true" />
+          <Property Name="ssc_school" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="ssc_board" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="ssc_rno" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="ssc_marks" Type="Int32" />
+          <Property Name="hsc_year" Type="String" MaxLength="4" FixedLength="false" Unicode="true" />
+          <Property Name="hsc_school" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="hsc_board" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="hsc_rno" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="hsc_marks" Type="Int32" />
+          <Property Name="competitive_exam_id" Type="Int32" />
+          <Property Name="competitive_exam_year" Type="String" MaxLength="4" FixedLength="false" Unicode="true" />
+          <Property Name="competitive_exam_rno" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="competitive_exam_marks" Type="Int32" />
+          <NavigationProperty Name="StudentDetail" Relationship="Self.FK_Academic_ToTable_AC_STUDENT" FromRole="Academic" ToRole="StudentDetails" />
+        </EntityType>
+        <EntityType Name="AdminDetail">
+          <Key>
+            <PropertyRef Name="admin_id" />
+          </Key>
+          <Property Name="admin_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="admin_name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="username" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Login" Relationship="Self.FK_Admin_ToTable_AD" FromRole="AdminDetails" ToRole="Login" />
+        </EntityType>
+        <EntityType Name="Allotment">
+          <Key>
+            <PropertyRef Name="std_id" />
+          </Key>
+          <Property Name="std_id" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="alloted_choice_id" Type="Int32" />
+          <Property Name="confirm_status" Type="Int32" />
+          <NavigationProperty Name="StudentDetail" Relationship="Self.FK_Academic_ToTable_AL_STUDENT" FromRole="Allotment" ToRole="StudentDetails" />
+          <NavigationProperty Name="Available_Choice" Relationship="Self.FK_Allotment_ToTable_1" FromRole="Allotment" ToRole="Available_Choice" />
+          <Property Name="preference_no" Type="Int32" />
+          <Property Name="round_no" Type="Int32" />
+        </EntityType>
+        <EntityType Name="Available_Choice">
+          <Key>
+            <PropertyRef Name="choice_id" />
+          </Key>
+          <Property Name="choice_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="branch_id" Type="Int32" />
+          <Property Name="college_id" Type="Int32" />
+          <Property Name="program_id" Type="Int32" />
+          <NavigationProperty Name="Allotments" Relationship="Self.FK_Allotment_ToTable_1" FromRole="Available_Choice" ToRole="Allotment" />
+          <NavigationProperty Name="Branch" Relationship="Self.FK_Available_Choice_ToTable" FromRole="Available_Choice" ToRole="Branch" />
+          <NavigationProperty Name="College" Relationship="Self.FK_Available_Choice_ToTable_1" FromRole="Available_Choice" ToRole="College" />
+          <NavigationProperty Name="Program" Relationship="Self.FK_Available_Choice_ToTable_2" FromRole="Available_Choice" ToRole="Program" />
+          <NavigationProperty Name="Student_Choice" Relationship="Self.FK_Student_Choice_ToTable_1" FromRole="Available_Choice" ToRole="Student_Choice" />
+          <Property Name="gen" Type="Int32" />
+          <Property Name="obc" Type="Int32" />
+          <Property Name="sc" Type="Int32" />
+          <Property Name="st" Type="Int32" />
+        </EntityType>
+        <EntityType Name="Branch">
+          <Key>
+            <PropertyRef Name="branch_id" />
+          </Key>
+          <Property Name="branch_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="branch_name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="Available_Choice" Relationship="Self.FK_Available_Choice_ToTable" FromRole="Branch" ToRole="Available_Choice" />
+          <NavigationProperty Name="Branch_College" Relationship="Self.FK_Branch_College_ToTable" FromRole="Branch" ToRole="Branch_College" />
+          <NavigationProperty Name="Branch_Program" Relationship="admissionModel.FK_Branch_Program_ToTable_B" FromRole="Branch" ToRole="Branch_Program" />
+        </EntityType>
+        <EntityType Name="Branch_College">
+          <Key>
+            <PropertyRef Name="branch_id" />
+            <PropertyRef Name="college_id" />
+            <PropertyRef Name="program_id" />
+          </Key>
+          <Property Name="branch_id" Type="Int32" Nullable="false" />
+          <Property Name="college_id" Type="Int32" Nullable="false" />
+          <Property Name="program_id" Type="Int32" Nullable="false" />
+          <Property Name="general" Type="Int32" />
+          <Property Name="obc" Type="Int32" />
+          <Property Name="sc" Type="Int32" />
+          <Property Name="st" Type="Int32" />
+          <NavigationProperty Name="Branch" Relationship="Self.FK_Branch_College_ToTable" FromRole="Branch_College" ToRole="Branch" />
+          <NavigationProperty Name="College" Relationship="Self.FK_Branch_College_ToTable_1" FromRole="Branch_College" ToRole="College" />
+          <NavigationProperty Name="Program" Relationship="Self.FK_Branch_College_ToTable_2" FromRole="Branch_College" ToRole="Program" />
+        </EntityType>
+        <EntityType Name="Category">
+          <Key>
+            <PropertyRef Name="category_id" />
+          </Key>
+          <Property Name="category_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="category_name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="StudentDetails" Relationship="Self.FK_Student_ToTable_CATEGORY" FromRole="Category" ToRole="StudentDetails" />
+        </EntityType>
+        <EntityType Name="College">
+          <Key>
+            <PropertyRef Name="college_id" />
+          </Key>
+          <Property Name="college_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="college_name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="city" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="email_id" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="contact_no" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Available_Choice" Relationship="Self.FK_Available_Choice_ToTable_1" FromRole="College" ToRole="Available_Choice" />
+          <NavigationProperty Name="Branch_College" Relationship="Self.FK_Branch_College_ToTable_1" FromRole="College" ToRole="Branch_College" />
+          <NavigationProperty Name="College_Program" Relationship="Self.FK_College_Program_ToTable" FromRole="College" ToRole="College_Program" />
+        </EntityType>
+        <EntityType Name="College_Program">
+          <Key>
+            <PropertyRef Name="college_id" />
+            <PropertyRef Name="program_id" />
+          </Key>
+          <Property Name="college_id" Type="Int32" Nullable="false" />
+          <Property Name="program_id" Type="Int32" Nullable="false" />
+          <Property Name="reference_no" Type="Int32" />
+          <NavigationProperty Name="College" Relationship="Self.FK_College_Program_ToTable" FromRole="College_Program" ToRole="College" />
+          <NavigationProperty Name="Program" Relationship="Self.FK_College_Program_ToTable_1" FromRole="College_Program" ToRole="Program" />
+        </EntityType>
+        <EntityType Name="Competitive_Exam">
+          <Key>
+            <PropertyRef Name="exam_id" />
+          </Key>
+          <Property Name="exam_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="exam_name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="program_id" Type="Int32" />
+          <NavigationProperty Name="Program" Relationship="Self.FK_Competitive_Exam_ToTable" FromRole="Competitive_Exam" ToRole="Program" />
+        </EntityType>
+        <EntityType Name="Event">
+          <Key>
+            <PropertyRef Name="event_id" />
+          </Key>
+          <Property Name="event_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="event_details" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="Login">
+          <Key>
+            <PropertyRef Name="username" />
+          </Key>
+          <Property Name="username" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="password" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="role" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="AdminDetails" Relationship="Self.FK_Admin_ToTable_AD" FromRole="Login" ToRole="AdminDetails" />
+          <NavigationProperty Name="StudentDetails" Relationship="Self.FK_Student_ToTable_LOGIN" FromRole="Login" ToRole="StudentDetails" />
+        </EntityType>
+        <EntityType Name="Program">
+          <Key>
+            <PropertyRef Name="program_id" />
+          </Key>
+          <Property Name="program_id" Type="Int32" Nullable="false" />
+          <Property Name="program_name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="no_of_round" Type="Int32" />
+          <NavigationProperty Name="Available_Choice" Relationship="Self.FK_Available_Choice_ToTable_2" FromRole="Program" ToRole="Available_Choice" />
+          <NavigationProperty Name="Branch_College" Relationship="Self.FK_Branch_College_ToTable_2" FromRole="Program" ToRole="Branch_College" />
+          <NavigationProperty Name="College_Program" Relationship="Self.FK_College_Program_ToTable_1" FromRole="Program" ToRole="College_Program" />
+          <NavigationProperty Name="Competitive_Exam" Relationship="Self.FK_Competitive_Exam_ToTable" FromRole="Program" ToRole="Competitive_Exam" />
+          <NavigationProperty Name="Rounds" Relationship="Self.FK_Round_ToTable" FromRole="Program" ToRole="Round" />
+          <NavigationProperty Name="StudentDetails" Relationship="Self.FK_Student_ToTable_PROGRAM" FromRole="Program" ToRole="StudentDetails" />
+          <NavigationProperty Name="Branch_Program" Relationship="admissionModel.FK_Branch_Program_ToTable_P" FromRole="Program" ToRole="Branch_Program" />
+        </EntityType>
+        <EntityType Name="Round">
+          <Key>
+            <PropertyRef Name="round_id" />
+            <PropertyRef Name="program_id" />
+          </Key>
+          <Property Name="round_id" Type="Int32" Nullable="false" />
+          <Property Name="program_id" Type="Int32" Nullable="false" />
+          <Property Name="start_date" Type="DateTime" Precision="7" />
+          <Property Name="end_date" Type="DateTime" Precision="7" />
+          <Property Name="status" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Program" Relationship="Self.FK_Round_ToTable" FromRole="Round" ToRole="Program" />
+          <Property Name="result_generated" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="Seat">
+          <Key>
+            <PropertyRef Name="seat_id" />
+          </Key>
+          <Property Name="seat_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="gen" Type="Int32" />
+          <Property Name="sc" Type="Int32" />
+          <Property Name="st" Type="Int32" />
+          <Property Name="obc" Type="Int32" />
+        </EntityType>
+        <EntityType Name="Student_Choice">
+          <Key>
+            <PropertyRef Name="std_id" />
+            <PropertyRef Name="choice_id" />
+          </Key>
+          <Property Name="std_id" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="choice_id" Type="Int32" Nullable="false" />
+          <Property Name="round_id" Type="Int32" Nullable="false" />
+          <Property Name="preference_no" Type="Int32" />
+          <Property Name="status" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Available_Choice" Relationship="Self.FK_Student_Choice_ToTable_1" FromRole="Student_Choice" ToRole="Available_Choice" />
+          <NavigationProperty Name="StudentDetail" Relationship="Self.FK_Academic_ToTable_SC_STUDENT" FromRole="Student_Choice" ToRole="StudentDetails" />
+        </EntityType>
+        <EntityType Name="StudentDetail">
+          <Key>
+            <PropertyRef Name="std_id" />
+          </Key>
+          <Property Name="std_id" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="std_name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="std_category" Type="Int32" />
+          <Property Name="username" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="academic_id" Type="Int32" />
+          <Property Name="dob" Type="DateTime" Precision="7" />
+          <Property Name="registration_date" Type="DateTime" Precision="7" />
+          <Property Name="contact_no" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="email_id" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="fees_paid" Type="Int32" />
+          <Property Name="rank" Type="Int32" />
+          <Property Name="pin" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="program" Type="Int32" />
+          <Property Name="verified" Type="Int32" />
+          <NavigationProperty Name="Academics" Relationship="Self.FK_Academic_ToTable_AC_STUDENT" FromRole="StudentDetails" ToRole="Academic" />
+          <NavigationProperty Name="Allotment" Relationship="Self.FK_Academic_ToTable_AL_STUDENT" FromRole="StudentDetails" ToRole="Allotment" />
+          <NavigationProperty Name="Category" Relationship="Self.FK_Student_ToTable_CATEGORY" FromRole="StudentDetails" ToRole="Category" />
+          <NavigationProperty Name="Login" Relationship="Self.FK_Student_ToTable_LOGIN" FromRole="StudentDetails" ToRole="Login" />
+          <NavigationProperty Name="Program1" Relationship="Self.FK_Student_ToTable_PROGRAM" FromRole="StudentDetails" ToRole="Program" />
+          <NavigationProperty Name="Student_Choice" Relationship="Self.FK_Academic_ToTable_SC_STUDENT" FromRole="StudentDetails" ToRole="Student_Choice" />
+        </EntityType>
+        <Association Name="FK_Academic_ToTable_AC_STUDENT">
+          <End Role="StudentDetails" Type="Self.StudentDetail" Multiplicity="0..1" />
+          <End Role="Academic" Type="Self.Academic" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="StudentDetails">
+              <PropertyRef Name="std_id" />
+            </Principal>
+            <Dependent Role="Academic">
+              <PropertyRef Name="std_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Admin_ToTable_AD">
+          <End Role="Login" Type="Self.Login" Multiplicity="0..1" />
+          <End Role="AdminDetails" Type="Self.AdminDetail" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Login">
+              <PropertyRef Name="username" />
+            </Principal>
+            <Dependent Role="AdminDetails">
+              <PropertyRef Name="username" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Academic_ToTable_AL_STUDENT">
+          <End Role="StudentDetails" Type="Self.StudentDetail" Multiplicity="1" />
+          <End Role="Allotment" Type="Self.Allotment" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="StudentDetails">
+              <PropertyRef Name="std_id" />
+            </Principal>
+            <Dependent Role="Allotment">
+              <PropertyRef Name="std_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Allotment_ToTable_1">
+          <End Role="Available_Choice" Type="Self.Available_Choice" Multiplicity="0..1" />
+          <End Role="Allotment" Type="Self.Allotment" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Available_Choice">
+              <PropertyRef Name="choice_id" />
+            </Principal>
+            <Dependent Role="Allotment">
+              <PropertyRef Name="alloted_choice_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Available_Choice_ToTable">
+          <End Role="Branch" Type="Self.Branch" Multiplicity="0..1" />
+          <End Role="Available_Choice" Type="Self.Available_Choice" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Branch">
+              <PropertyRef Name="branch_id" />
+            </Principal>
+            <Dependent Role="Available_Choice">
+              <PropertyRef Name="branch_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Available_Choice_ToTable_1">
+          <End Role="College" Type="Self.College" Multiplicity="0..1" />
+          <End Role="Available_Choice" Type="Self.Available_Choice" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="College">
+              <PropertyRef Name="college_id" />
+            </Principal>
+            <Dependent Role="Available_Choice">
+              <PropertyRef Name="college_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Available_Choice_ToTable_2">
+          <End Role="Program" Type="Self.Program" Multiplicity="0..1" />
+          <End Role="Available_Choice" Type="Self.Available_Choice" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Program">
+              <PropertyRef Name="program_id" />
+            </Principal>
+            <Dependent Role="Available_Choice">
+              <PropertyRef Name="program_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Student_Choice_ToTable_1">
+          <End Role="Available_Choice" Type="Self.Available_Choice" Multiplicity="1" />
+          <End Role="Student_Choice" Type="Self.Student_Choice" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Available_Choice">
+              <PropertyRef Name="choice_id" />
+            </Principal>
+            <Dependent Role="Student_Choice">
+              <PropertyRef Name="choice_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Branch_College_ToTable">
+          <End Role="Branch" Type="Self.Branch" Multiplicity="1" />
+          <End Role="Branch_College" Type="Self.Branch_College" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Branch">
+              <PropertyRef Name="branch_id" />
+            </Principal>
+            <Dependent Role="Branch_College">
+              <PropertyRef Name="branch_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Branch_College_ToTable_1">
+          <End Role="College" Type="Self.College" Multiplicity="1" />
+          <End Role="Branch_College" Type="Self.Branch_College" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="College">
+              <PropertyRef Name="college_id" />
+            </Principal>
+            <Dependent Role="Branch_College">
+              <PropertyRef Name="college_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Branch_College_ToTable_2">
+          <End Role="Program" Type="Self.Program" Multiplicity="1" />
+          <End Role="Branch_College" Type="Self.Branch_College" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Program">
+              <PropertyRef Name="program_id" />
+            </Principal>
+            <Dependent Role="Branch_College">
+              <PropertyRef Name="program_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Student_ToTable_CATEGORY">
+          <End Role="Category" Type="Self.Category" Multiplicity="0..1" />
+          <End Role="StudentDetails" Type="Self.StudentDetail" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Category">
+              <PropertyRef Name="category_id" />
+            </Principal>
+            <Dependent Role="StudentDetails">
+              <PropertyRef Name="std_category" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_College_Program_ToTable">
+          <End Role="College" Type="Self.College" Multiplicity="1" />
+          <End Role="College_Program" Type="Self.College_Program" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="College">
+              <PropertyRef Name="college_id" />
+            </Principal>
+            <Dependent Role="College_Program">
+              <PropertyRef Name="college_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_College_Program_ToTable_1">
+          <End Role="Program" Type="Self.Program" Multiplicity="1" />
+          <End Role="College_Program" Type="Self.College_Program" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Program">
+              <PropertyRef Name="program_id" />
+            </Principal>
+            <Dependent Role="College_Program">
+              <PropertyRef Name="program_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Competitive_Exam_ToTable">
+          <End Role="Program" Type="Self.Program" Multiplicity="0..1" />
+          <End Role="Competitive_Exam" Type="Self.Competitive_Exam" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Program">
+              <PropertyRef Name="program_id" />
+            </Principal>
+            <Dependent Role="Competitive_Exam">
+              <PropertyRef Name="program_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Student_ToTable_LOGIN">
+          <End Role="Login" Type="Self.Login" Multiplicity="0..1" />
+          <End Role="StudentDetails" Type="Self.StudentDetail" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Login">
+              <PropertyRef Name="username" />
+            </Principal>
+            <Dependent Role="StudentDetails">
+              <PropertyRef Name="username" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Round_ToTable">
+          <End Role="Program" Type="Self.Program" Multiplicity="1" />
+          <End Role="Round" Type="Self.Round" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Program">
+              <PropertyRef Name="program_id" />
+            </Principal>
+            <Dependent Role="Round">
+              <PropertyRef Name="program_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Student_ToTable_PROGRAM">
+          <End Role="Program" Type="Self.Program" Multiplicity="0..1" />
+          <End Role="StudentDetails" Type="Self.StudentDetail" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Program">
+              <PropertyRef Name="program_id" />
+            </Principal>
+            <Dependent Role="StudentDetails">
+              <PropertyRef Name="program" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Academic_ToTable_SC_STUDENT">
+          <End Role="StudentDetails" Type="Self.StudentDetail" Multiplicity="1" />
+          <End Role="Student_Choice" Type="Self.Student_Choice" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="StudentDetails">
+              <PropertyRef Name="std_id" />
+            </Principal>
+            <Dependent Role="Student_Choice">
+              <PropertyRef Name="std_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="admissionEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Academics" EntityType="Self.Academic" />
+          <EntitySet Name="AdminDetails" EntityType="Self.AdminDetail" />
+          <EntitySet Name="Allotments" EntityType="Self.Allotment" />
+          <EntitySet Name="Available_Choice" EntityType="Self.Available_Choice" />
+          <EntitySet Name="Branches" EntityType="Self.Branch" />
+          <EntitySet Name="Branch_College" EntityType="Self.Branch_College" />
+          <EntitySet Name="Categories" EntityType="Self.Category" />
+          <EntitySet Name="Colleges" EntityType="Self.College" />
+          <EntitySet Name="College_Program" EntityType="Self.College_Program" />
+          <EntitySet Name="Competitive_Exam" EntityType="Self.Competitive_Exam" />
+          <EntitySet Name="Events" EntityType="Self.Event" />
+          <EntitySet Name="Logins" EntityType="Self.Login" />
+          <EntitySet Name="Programs" EntityType="Self.Program" />
+          <EntitySet Name="Rounds" EntityType="Self.Round" />
+          <EntitySet Name="Seats" EntityType="Self.Seat" />
+          <EntitySet Name="Student_Choice" EntityType="Self.Student_Choice" />
+          <EntitySet Name="StudentDetails" EntityType="Self.StudentDetail" />
+          <AssociationSet Name="FK_Academic_ToTable_AC_STUDENT" Association="Self.FK_Academic_ToTable_AC_STUDENT">
+            <End Role="StudentDetails" EntitySet="StudentDetails" />
+            <End Role="Academic" EntitySet="Academics" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Admin_ToTable_AD" Association="Self.FK_Admin_ToTable_AD">
+            <End Role="Login" EntitySet="Logins" />
+            <End Role="AdminDetails" EntitySet="AdminDetails" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Academic_ToTable_AL_STUDENT" Association="Self.FK_Academic_ToTable_AL_STUDENT">
+            <End Role="StudentDetails" EntitySet="StudentDetails" />
+            <End Role="Allotment" EntitySet="Allotments" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Allotment_ToTable_1" Association="Self.FK_Allotment_ToTable_1">
+            <End Role="Available_Choice" EntitySet="Available_Choice" />
+            <End Role="Allotment" EntitySet="Allotments" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Available_Choice_ToTable" Association="Self.FK_Available_Choice_ToTable">
+            <End Role="Branch" EntitySet="Branches" />
+            <End Role="Available_Choice" EntitySet="Available_Choice" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Available_Choice_ToTable_1" Association="Self.FK_Available_Choice_ToTable_1">
+            <End Role="College" EntitySet="Colleges" />
+            <End Role="Available_Choice" EntitySet="Available_Choice" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Available_Choice_ToTable_2" Association="Self.FK_Available_Choice_ToTable_2">
+            <End Role="Program" EntitySet="Programs" />
+            <End Role="Available_Choice" EntitySet="Available_Choice" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Student_Choice_ToTable_1" Association="Self.FK_Student_Choice_ToTable_1">
+            <End Role="Available_Choice" EntitySet="Available_Choice" />
+            <End Role="Student_Choice" EntitySet="Student_Choice" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Branch_College_ToTable" Association="Self.FK_Branch_College_ToTable">
+            <End Role="Branch" EntitySet="Branches" />
+            <End Role="Branch_College" EntitySet="Branch_College" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Branch_College_ToTable_1" Association="Self.FK_Branch_College_ToTable_1">
+            <End Role="College" EntitySet="Colleges" />
+            <End Role="Branch_College" EntitySet="Branch_College" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Branch_College_ToTable_2" Association="Self.FK_Branch_College_ToTable_2">
+            <End Role="Program" EntitySet="Programs" />
+            <End Role="Branch_College" EntitySet="Branch_College" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Student_ToTable_CATEGORY" Association="Self.FK_Student_ToTable_CATEGORY">
+            <End Role="Category" EntitySet="Categories" />
+            <End Role="StudentDetails" EntitySet="StudentDetails" />
+          </AssociationSet>
+          <AssociationSet Name="FK_College_Program_ToTable" Association="Self.FK_College_Program_ToTable">
+            <End Role="College" EntitySet="Colleges" />
+            <End Role="College_Program" EntitySet="College_Program" />
+          </AssociationSet>
+          <AssociationSet Name="FK_College_Program_ToTable_1" Association="Self.FK_College_Program_ToTable_1">
+            <End Role="Program" EntitySet="Programs" />
+            <End Role="College_Program" EntitySet="College_Program" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Competitive_Exam_ToTable" Association="Self.FK_Competitive_Exam_ToTable">
+            <End Role="Program" EntitySet="Programs" />
+            <End Role="Competitive_Exam" EntitySet="Competitive_Exam" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Student_ToTable_LOGIN" Association="Self.FK_Student_ToTable_LOGIN">
+            <End Role="Login" EntitySet="Logins" />
+            <End Role="StudentDetails" EntitySet="StudentDetails" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Round_ToTable" Association="Self.FK_Round_ToTable">
+            <End Role="Program" EntitySet="Programs" />
+            <End Role="Round" EntitySet="Rounds" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Student_ToTable_PROGRAM" Association="Self.FK_Student_ToTable_PROGRAM">
+            <End Role="Program" EntitySet="Programs" />
+            <End Role="StudentDetails" EntitySet="StudentDetails" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Academic_ToTable_SC_STUDENT" Association="Self.FK_Academic_ToTable_SC_STUDENT">
+            <End Role="StudentDetails" EntitySet="StudentDetails" />
+            <End Role="Student_Choice" EntitySet="Student_Choice" />
+          </AssociationSet>
+          <EntitySet Name="Branch_Program" EntityType="admissionModel.Branch_Program" />
+          <AssociationSet Name="FK_Branch_Program_ToTable_B" Association="admissionModel.FK_Branch_Program_ToTable_B">
+            <End Role="Branch" EntitySet="Branches" />
+            <End Role="Branch_Program" EntitySet="Branch_Program" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Branch_Program_ToTable_P" Association="admissionModel.FK_Branch_Program_ToTable_P">
+            <End Role="Program" EntitySet="Programs" />
+            <End Role="Branch_Program" EntitySet="Branch_Program" />
+          </AssociationSet>
+        </EntityContainer>
+        <EntityType Name="Branch_Program">
+          <Key>
+            <PropertyRef Name="branch_id" />
+            <PropertyRef Name="program_id" />
+          </Key>
+          <Property Name="branch_id" Type="Int32" Nullable="false" />
+          <Property Name="program_id" Type="Int32" Nullable="false" />
+          <Property Name="refence_no" Type="Int32" />
+          <NavigationProperty Name="Branch" Relationship="admissionModel.FK_Branch_Program_ToTable_B" FromRole="Branch_Program" ToRole="Branch" />
+          <NavigationProperty Name="Program" Relationship="admissionModel.FK_Branch_Program_ToTable_P" FromRole="Branch_Program" ToRole="Program" />
+        </EntityType>
+        <Association Name="FK_Branch_Program_ToTable_B">
+          <End Type="admissionModel.Branch" Role="Branch" Multiplicity="1" />
+          <End Type="admissionModel.Branch_Program" Role="Branch_Program" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Branch">
+              <PropertyRef Name="branch_id" />
+            </Principal>
+            <Dependent Role="Branch_Program">
+              <PropertyRef Name="branch_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Branch_Program_ToTable_P">
+          <End Type="admissionModel.Program" Role="Program" Multiplicity="1" />
+          <End Type="admissionModel.Branch_Program" Role="Branch_Program" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Program">
+              <PropertyRef Name="program_id" />
+            </Principal>
+            <Dependent Role="Branch_Program">
+              <PropertyRef Name="program_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="admissionModelStoreContainer" CdmEntityContainer="admissionEntities">
+          <EntitySetMapping Name="Academics">
+            <EntityTypeMapping TypeName="admissionModel.Academic">
+              <MappingFragment StoreEntitySet="Academic">
+                <ScalarProperty Name="academic_id" ColumnName="academic_id" />
+                <ScalarProperty Name="std_id" ColumnName="std_id" />
+                <ScalarProperty Name="ssc_year" ColumnName="ssc_year" />
+                <ScalarProperty Name="ssc_school" ColumnName="ssc_school" />
+                <ScalarProperty Name="ssc_board" ColumnName="ssc_board" />
+                <ScalarProperty Name="ssc_rno" ColumnName="ssc_rno" />
+                <ScalarProperty Name="ssc_marks" ColumnName="ssc_marks" />
+                <ScalarProperty Name="hsc_year" ColumnName="hsc_year" />
+                <ScalarProperty Name="hsc_school" ColumnName="hsc_school" />
+                <ScalarProperty Name="hsc_board" ColumnName="hsc_board" />
+                <ScalarProperty Name="hsc_rno" ColumnName="hsc_rno" />
+                <ScalarProperty Name="hsc_marks" ColumnName="hsc_marks" />
+                <ScalarProperty Name="competitive_exam_id" ColumnName="competitive_exam_id" />
+                <ScalarProperty Name="competitive_exam_year" ColumnName="competitive_exam_year" />
+                <ScalarProperty Name="competitive_exam_rno" ColumnName="competitive_exam_rno" />
+                <ScalarProperty Name="competitive_exam_marks" ColumnName="competitive_exam_marks" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="AdminDetails">
+            <EntityTypeMapping TypeName="admissionModel.AdminDetail">
+              <MappingFragment StoreEntitySet="AdminDetails">
+                <ScalarProperty Name="admin_id" ColumnName="admin_id" />
+                <ScalarProperty Name="admin_name" ColumnName="admin_name" />
+                <ScalarProperty Name="username" ColumnName="username" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Allotments">
+            <EntityTypeMapping TypeName="admissionModel.Allotment">
+              <MappingFragment StoreEntitySet="Allotment">
+                <ScalarProperty Name="round_no" ColumnName="round_no" />
+                <ScalarProperty Name="preference_no" ColumnName="preference_no" />
+                <ScalarProperty Name="std_id" ColumnName="std_id" />
+                <ScalarProperty Name="alloted_choice_id" ColumnName="alloted_choice_id" />
+                <ScalarProperty Name="confirm_status" ColumnName="confirm_status" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Available_Choice">
+            <EntityTypeMapping TypeName="admissionModel.Available_Choice">
+              <MappingFragment StoreEntitySet="Available_Choice">
+                <ScalarProperty Name="st" ColumnName="st" />
+                <ScalarProperty Name="sc" ColumnName="sc" />
+                <ScalarProperty Name="obc" ColumnName="obc" />
+                <ScalarProperty Name="gen" ColumnName="gen" />
+                <ScalarProperty Name="choice_id" ColumnName="choice_id" />
+                <ScalarProperty Name="branch_id" ColumnName="branch_id" />
+                <ScalarProperty Name="college_id" ColumnName="college_id" />
+                <ScalarProperty Name="program_id" ColumnName="program_id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Branches">
+            <EntityTypeMapping TypeName="admissionModel.Branch">
+              <MappingFragment StoreEntitySet="Branch">
+                <ScalarProperty Name="branch_id" ColumnName="branch_id" />
+                <ScalarProperty Name="branch_name" ColumnName="branch_name" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Branch_College">
+            <EntityTypeMapping TypeName="admissionModel.Branch_College">
+              <MappingFragment StoreEntitySet="Branch_College">
+                <ScalarProperty Name="branch_id" ColumnName="branch_id" />
+                <ScalarProperty Name="college_id" ColumnName="college_id" />
+                <ScalarProperty Name="program_id" ColumnName="program_id" />
+                <ScalarProperty Name="general" ColumnName="general" />
+                <ScalarProperty Name="obc" ColumnName="obc" />
+                <ScalarProperty Name="sc" ColumnName="sc" />
+                <ScalarProperty Name="st" ColumnName="st" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Categories">
+            <EntityTypeMapping TypeName="admissionModel.Category">
+              <MappingFragment StoreEntitySet="Category">
+                <ScalarProperty Name="category_id" ColumnName="category_id" />
+                <ScalarProperty Name="category_name" ColumnName="category_name" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Colleges">
+            <EntityTypeMapping TypeName="admissionModel.College">
+              <MappingFragment StoreEntitySet="College">
+                <ScalarProperty Name="college_id" ColumnName="college_id" />
+                <ScalarProperty Name="college_name" ColumnName="college_name" />
+                <ScalarProperty Name="city" ColumnName="city" />
+                <ScalarProperty Name="email_id" ColumnName="email_id" />
+                <ScalarProperty Name="contact_no" ColumnName="contact_no" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="College_Program">
+            <EntityTypeMapping TypeName="admissionModel.College_Program">
+              <MappingFragment StoreEntitySet="College_Program">
+                <ScalarProperty Name="college_id" ColumnName="college_id" />
+                <ScalarProperty Name="program_id" ColumnName="program_id" />
+                <ScalarProperty Name="reference_no" ColumnName="reference_no" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Competitive_Exam">
+            <EntityTypeMapping TypeName="admissionModel.Competitive_Exam">
+              <MappingFragment StoreEntitySet="Competitive_Exam">
+                <ScalarProperty Name="exam_id" ColumnName="exam_id" />
+                <ScalarProperty Name="exam_name" ColumnName="exam_name" />
+                <ScalarProperty Name="program_id" ColumnName="program_id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Events">
+            <EntityTypeMapping TypeName="admissionModel.Event">
+              <MappingFragment StoreEntitySet="Event">
+                <ScalarProperty Name="event_id" ColumnName="event_id" />
+                <ScalarProperty Name="event_details" ColumnName="event_details" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Logins">
+            <EntityTypeMapping TypeName="admissionModel.Login">
+              <MappingFragment StoreEntitySet="Login">
+                <ScalarProperty Name="username" ColumnName="username" />
+                <ScalarProperty Name="password" ColumnName="password" />
+                <ScalarProperty Name="role" ColumnName="role" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Programs">
+            <EntityTypeMapping TypeName="admissionModel.Program">
+              <MappingFragment StoreEntitySet="Program">
+                <ScalarProperty Name="program_id" ColumnName="program_id" />
+                <ScalarProperty Name="program_name" ColumnName="program_name" />
+                <ScalarProperty Name="no_of_round" ColumnName="no_of_round" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Rounds">
+            <EntityTypeMapping TypeName="admissionModel.Round">
+              <MappingFragment StoreEntitySet="Round">
+                <ScalarProperty Name="result_generated" ColumnName="result_generated" />
+                <ScalarProperty Name="round_id" ColumnName="round_id" />
+                <ScalarProperty Name="program_id" ColumnName="program_id" />
+                <ScalarProperty Name="start_date" ColumnName="start_date" />
+                <ScalarProperty Name="end_date" ColumnName="end_date" />
+                <ScalarProperty Name="status" ColumnName="status" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Seats">
+            <EntityTypeMapping TypeName="admissionModel.Seat">
+              <MappingFragment StoreEntitySet="Seat">
+                <ScalarProperty Name="seat_id" ColumnName="seat_id" />
+                <ScalarProperty Name="gen" ColumnName="gen" />
+                <ScalarProperty Name="sc" ColumnName="sc" />
+                <ScalarProperty Name="st" ColumnName="st" />
+                <ScalarProperty Name="obc" ColumnName="obc" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Student_Choice">
+            <EntityTypeMapping TypeName="admissionModel.Student_Choice">
+              <MappingFragment StoreEntitySet="Student_Choice">
+                <ScalarProperty Name="std_id" ColumnName="std_id" />
+                <ScalarProperty Name="choice_id" ColumnName="choice_id" />
+                <ScalarProperty Name="round_id" ColumnName="round_id" />
+                <ScalarProperty Name="preference_no" ColumnName="preference_no" />
+                <ScalarProperty Name="status" ColumnName="status" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="StudentDetails">
+            <EntityTypeMapping TypeName="admissionModel.StudentDetail">
+              <MappingFragment StoreEntitySet="StudentDetails">
+                <ScalarProperty Name="std_id" ColumnName="std_id" />
+                <ScalarProperty Name="std_name" ColumnName="std_name" />
+                <ScalarProperty Name="std_category" ColumnName="std_category" />
+                <ScalarProperty Name="username" ColumnName="username" />
+                <ScalarProperty Name="academic_id" ColumnName="academic_id" />
+                <ScalarProperty Name="dob" ColumnName="dob" />
+                <ScalarProperty Name="registration_date" ColumnName="registration_date" />
+                <ScalarProperty Name="contact_no" ColumnName="contact_no" />
+                <ScalarProperty Name="email_id" ColumnName="email_id" />
+                <ScalarProperty Name="fees_paid" ColumnName="fees_paid" />
+                <ScalarProperty Name="rank" ColumnName="rank" />
+                <ScalarProperty Name="pin" ColumnName="pin" />
+                <ScalarProperty Name="program" ColumnName="program" />
+                <ScalarProperty Name="verified" ColumnName="verified" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Branch_Program">
+            <EntityTypeMapping TypeName="admissionModel.Branch_Program">
+              <MappingFragment StoreEntitySet="Branch_Program">
+                <ScalarProperty Name="refence_no" ColumnName="refence_no" />
+                <ScalarProperty Name="program_id" ColumnName="program_id" />
+                <ScalarProperty Name="branch_id" ColumnName="branch_id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

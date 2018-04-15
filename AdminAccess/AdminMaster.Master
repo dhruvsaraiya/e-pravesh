@@ -1,0 +1,45 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="AdminMaster.master.cs" Inherits="e_Pravesh.Admin.AdminMaster" %>
+
+<!DOCTYPE html>
+
+<html>
+<head runat="server">
+    <title ></title>
+    <asp:ContentPlaceHolder ID="head" runat="server">
+    
+    </asp:ContentPlaceHolder>
+    <style type="text/css">
+        .auto-style1 {
+            text-align: center;
+        }
+        .auto-style2 {
+            font-size: x-large;
+            color: #A5916F;
+        }
+        .auto-style3 {
+            font-size: xx-large;
+            color: #2A61A3;
+        }
+        .auto-style4 {
+            color: #A5916F;
+        }
+    </style>
+</head>
+<body>
+    <table >
+        <tr>
+            <td >
+                <asp:Image ID="Image1" runat="server" Height="110px" Width="174px" ImageUrl="~/Images/logo.jpg" />
+            </td>
+            <td class="auto-style3" ><strong>Online University Admission Committee</strong></td>
+        </tr>
+        <tr>
+            <td class="auto-style1" ><strong>&nbsp;&nbsp;&nbsp;<span class="auto-style4"> <span class="auto-style2">e-Pravesh&nbsp;</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span></strong></td>
+            <td>Constitutued under section 4 of the Gujarat Professional Educational Colleges or Institutions ,<br />
+                Regulations of Admission and Fixation of Fees Act 2015, Guj.2 of 2016</td>
+        </tr>
+    </table>
+        <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">
+        </asp:ContentPlaceHolder>
+</body>
+</html>

@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="7a1966768902474dbc06e13e9fc9d933" Name="Diagram1" ZoomLevel="67">
+        <EntityTypeShape EntityType="admissionModel.Academic" Width="1.5" PointX="8.25" PointY="6.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="admissionModel.AdminDetail" Width="1.5" PointX="6" PointY="1.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="admissionModel.Allotment" Width="1.5" PointX="8.25" PointY="11.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="admissionModel.Available_Choice" Width="1.5" PointX="3" PointY="11.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="admissionModel.Branch" Width="1.5" PointX="0.75" PointY="16.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="admissionModel.Branch_College" Width="1.5" PointX="6" PointY="11.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="admissionModel.Category" Width="1.5" PointX="3.75" PointY="5.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="admissionModel.College" Width="1.5" PointX="0.75" PointY="8" IsExpanded="true" />
+        <EntityTypeShape EntityType="admissionModel.College_Program" Width="1.5" PointX="3" PointY="8.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="admissionModel.Competitive_Exam" Width="1.5" PointX="3" PointY="20.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="admissionModel.Event" Width="1.5" PointX="0.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="admissionModel.Login" Width="1.5" PointX="3.75" PointY="1.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="admissionModel.Program" Width="1.5" PointX="0.75" PointY="11.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="admissionModel.Round" Width="1.5" PointX="3" PointY="23.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="admissionModel.Seat" Width="1.5" PointX="0.75" PointY="3.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="admissionModel.Student_Choice" Width="1.5" PointX="11.25" PointY="9" IsExpanded="true" />
+        <EntityTypeShape EntityType="admissionModel.StudentDetail" Width="1.5" PointX="9" PointY="0.75" IsExpanded="true" />
+        <AssociationConnector Association="admissionModel.FK_Academic_ToTable_AC_STUDENT" ManuallyRouted="false" />
+        <AssociationConnector Association="admissionModel.FK_Admin_ToTable_AD" ManuallyRouted="false" />
+        <AssociationConnector Association="admissionModel.FK_Academic_ToTable_AL_STUDENT" ManuallyRouted="false" />
+        <AssociationConnector Association="admissionModel.FK_Allotment_ToTable_1" ManuallyRouted="false" />
+        <AssociationConnector Association="admissionModel.FK_Available_Choice_ToTable" ManuallyRouted="false" />
+        <AssociationConnector Association="admissionModel.FK_Available_Choice_ToTable_1" ManuallyRouted="false" />
+        <AssociationConnector Association="admissionModel.FK_Available_Choice_ToTable_2" ManuallyRouted="false" />
+        <AssociationConnector Association="admissionModel.FK_Student_Choice_ToTable_1" ManuallyRouted="false" />
+        <AssociationConnector Association="admissionModel.FK_Branch_College_ToTable" ManuallyRouted="false" />
+        <AssociationConnector Association="admissionModel.FK_Branch_College_ToTable_1" ManuallyRouted="false" />
+        <AssociationConnector Association="admissionModel.FK_Branch_College_ToTable_2" ManuallyRouted="false" />
+        <AssociationConnector Association="admissionModel.FK_Student_ToTable_CATEGORY" ManuallyRouted="false" />
+        <AssociationConnector Association="admissionModel.FK_College_Program_ToTable" ManuallyRouted="false" />
+        <AssociationConnector Association="admissionModel.FK_College_Program_ToTable_1" ManuallyRouted="false" />
+        <AssociationConnector Association="admissionModel.FK_Competitive_Exam_ToTable" ManuallyRouted="false" />
+        <AssociationConnector Association="admissionModel.FK_Student_ToTable_LOGIN" ManuallyRouted="false" />
+        <AssociationConnector Association="admissionModel.FK_Round_ToTable" ManuallyRouted="false" />
+        <AssociationConnector Association="admissionModel.FK_Student_ToTable_PROGRAM" ManuallyRouted="false" />
+        <AssociationConnector Association="admissionModel.FK_Academic_ToTable_SC_STUDENT" ManuallyRouted="false" />
+        <EntityTypeShape EntityType="admissionModel.Branch_Program" Width="1.5" PointX="3" PointY="16.125" />
+        <AssociationConnector Association="admissionModel.FK_Branch_Program_ToTable_B" />
+        <AssociationConnector Association="admissionModel.FK_Branch_Program_ToTable_P" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

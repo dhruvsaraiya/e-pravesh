@@ -1,0 +1,8 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ListItems>
+  <ListItem text="--SELECT--" value="0"></ListItem>
+  <ListItem text="Engineering" value="1"></ListItem>
+  <ListItem text="Degree Pharmacy" value="2"></ListItem>
+  <ListItem text="MBC/MCA" value="3"></ListItem>
+  <ListItem text="Medical" value="4"></ListItem>
+</ListItems>
